@@ -48,6 +48,8 @@ import { ref, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import Swal from "sweetalert2";
 
+definePageMeta({ layout: "admin" });
+
 const route = useRoute();
 const router = useRouter();
 const config = useRuntimeConfig();
