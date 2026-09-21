@@ -82,7 +82,7 @@ const currentCategoryName = computed(() => {
   <div class="bg-stone-50 min-h-screen pb-16">
     
     <!-- Banner Kategori -->
-    <div class="bg-gray-900 text-white py-16 text-center">
+    <div class="bg-red-900 text-white py-16 text-center">
       <h1 class="text-4xl md:text-5xl font-bold mb-4">
         {{ currentCategoryName }}
       </h1>
