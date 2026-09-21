@@ -46,7 +46,7 @@
           active-class="bg-blue-100 text-blue-700 font-bold"
         >
           <!-- Boleh tambahkan icon di sini -->
-          <span>Artikel</span>
+          Artikel
         </NuxtLink>
       </nav>
       <div class="p-4 border-t border-gray-800">
