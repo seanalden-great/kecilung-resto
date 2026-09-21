@@ -42,8 +42,8 @@
         <!-- Tambahkan baris ini di dalam menu navigasi sidebar admin.vue Anda -->
         <NuxtLink
           to="/admin/article/article_page"
-          class="flex items-center gap-2 p-2 rounded hover:bg-gray-200 transition"
-          active-class="bg-blue-100 text-blue-700 font-bold"
+          class="block py-2.5 px-4 rounded transition-colors hover:bg-gray-800"
+          active-class="bg-gray-800 text-orange-400"
         >
           <!-- Boleh tambahkan icon di sini -->
           Artikel
