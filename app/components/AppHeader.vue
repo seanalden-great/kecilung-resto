@@ -396,6 +396,7 @@ onMounted(() => {
           <NuxtLink to="/catering" class="text-red-800 hover:text-red-600 transition-colors">Catering</NuxtLink>
           <NuxtLink to="/moment" class="text-red-800 hover:text-red-600 transition-colors">Moment</NuxtLink>
           <NuxtLink to="/article" class="text-red-800 hover:text-red-600 transition-colors">Articles</NuxtLink>
+          <NuxtLink to="/contact" class="text-red-800 hover:text-red-600 transition-colors">Contact Us</NuxtLink>
         </nav>
 
         <!-- Hamburger Button (Mobile) -->
@@ -459,6 +460,7 @@ onMounted(() => {
           <NuxtLink to="/catering" @click="isMobileMenuOpen = false" class="hover:text-red-600 transition-colors">Catering</NuxtLink>
           <NuxtLink to="/moment" @click="isMobileMenuOpen = false" class="hover:text-red-600 transition-colors">Moment</NuxtLink>
           <NuxtLink to="/article" @click="isMobileMenuOpen = false" class="hover:text-red-600 transition-colors">Articles</NuxtLink>
+          <NuxtLink to="/contact" @click="isMobileMenuOpen = false" class="hover:text-red-600 transition-colors">Contact Us</NuxtLink>
         </nav>
       </div>
     </header>
