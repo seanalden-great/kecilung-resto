@@ -86,7 +86,7 @@ const currentCategoryName = computed(() => {
       <h1 class="text-4xl md:text-5xl font-bold mb-4">
         {{ currentCategoryName }}
       </h1>
-      <p class="text-gray-400 max-w-2xl mx-auto px-4">
+      <p class="text-white max-w-2xl mx-auto px-4">
         Nikmati pilihan hidangan terbaik dari kategori {{ currentCategoryName }} yang disiapkan khusus untuk memanjakan lidah Anda.
       </p>
     </div>
