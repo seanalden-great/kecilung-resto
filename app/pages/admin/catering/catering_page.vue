@@ -268,7 +268,7 @@ const deleteCatering = async (id) => {
 
 <script setup>
 import Swal from 'sweetalert2';
-definePageMeta({ layout: "admin" });
+definePageMeta({ layout: "admin", middleware: "auth" });
 
 const baseURL = "https://kecilung-resto.vercel.app/api";
 

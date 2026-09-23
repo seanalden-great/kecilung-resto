@@ -237,7 +237,7 @@ const deleteMenu = async (id) => {
 </template>
 
 <script setup>
-definePageMeta({ layout: "admin" });
+definePageMeta({ layout: "admin", middleware: "auth" });
 
 const baseURL = "https://kecilung-resto.vercel.app/api";
 

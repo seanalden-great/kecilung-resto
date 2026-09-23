@@ -75,7 +75,7 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 import Swal from "sweetalert2";
 
-definePageMeta({ layout: "admin" });
+definePageMeta({ layout: "admin", middleware: "auth" });
 
 const router = useRouter();
 const config = useRuntimeConfig();

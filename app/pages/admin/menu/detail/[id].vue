@@ -109,7 +109,7 @@ const menu = computed(() => {
 </template>
 
 <script setup>
-definePageMeta({ layout: "admin" });
+definePageMeta({ layout: "admin", middleware: "auth" });
 
 const route = useRoute();
 const id = route.params.id;

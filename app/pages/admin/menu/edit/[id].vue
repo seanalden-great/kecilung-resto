@@ -152,7 +152,7 @@ const updateMenu = async () => {
 </template>
 
 <script setup>
-definePageMeta({ layout: "admin" });
+definePageMeta({ layout: "admin", middleware: "auth" });
 
 const route = useRoute();
 const router = useRouter();

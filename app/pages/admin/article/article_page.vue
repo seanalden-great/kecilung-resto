@@ -65,7 +65,7 @@
 import { ref, onMounted } from "vue";
 import Swal from "sweetalert2";
 
-definePageMeta({ layout: "admin" });
+definePageMeta({ layout: "admin", middleware: "auth" });
 
 const config = useRuntimeConfig();
 const articles = ref([]);

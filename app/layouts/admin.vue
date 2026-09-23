@@ -300,7 +300,7 @@
       </nav>
 
       <!-- Tombol Logout Bawah -->
-      <div class="p-4 border-t border-gray-200 bg-gray-50">
+      <!-- <div class="p-4 border-t border-gray-200 bg-gray-50">
         <button 
           :title="isSidebarCollapsed ? 'Logout' : ''"
           :class="[
@@ -311,6 +311,20 @@
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
           </svg>
+          <span :class="{'hidden': isSidebarCollapsed}">Logout</span>
+        </button>
+      </div> -->
+
+      <div class="p-4 border-t border-gray-200 bg-gray-50">
+        <button 
+          @click="handleLogout"
+          :title="isSidebarCollapsed ? 'Logout' : ''"
+          :class="[
+            'w-full flex items-center justify-center bg-red-50 hover:bg-red-100 text-red-600 py-3 rounded-lg font-bold transition-all shadow-sm transform hover:-translate-y-0.5 border border-red-100',
+            isSidebarCollapsed ? 'px-0' : 'gap-2'
+          ]"
+        >
+          <!-- (SVG LOGOUT TETAP) -->
           <span :class="{'hidden': isSidebarCollapsed}">Logout</span>
         </button>
       </div>
@@ -337,20 +351,35 @@
       </button>
 
       <!-- Profil Admin Kanan -->
-      <div class="flex items-center gap-4">
+      <!-- <div class="flex items-center gap-4">
         <div class="flex flex-col text-right hidden sm:block">
           <span class="text-sm font-bold text-gray-900 block leading-tight">Admin Kecilung</span>
           <span class="text-xs text-gray-500">Super Admin</span>
         </div>
         
-        <!-- Avatar Dummy -->
         <button class="relative rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">
           <img 
             src="https://ui-avatars.com/api/?name=Admin+Kecilung&background=f97316&color=fff" 
             alt="Profil Admin" 
             class="h-10 w-10 rounded-full object-cover border-2 border-gray-200 shadow-sm hover:border-orange-500 transition-colors"
           />
-          <!-- Status Online Bulat Hijau -->
+          <span class="absolute bottom-0 right-0 block h-3 w-3 rounded-full bg-green-500 ring-2 ring-white"></span>
+        </button>
+      </div> -->
+      
+      <div class="flex items-center gap-4">
+        <div class="flex flex-col text-right hidden sm:block">
+          <span class="text-sm font-bold text-gray-900 block leading-tight">{{ currentAdmin.name || 'Admin' }}</span>
+          <span class="text-xs text-gray-500">Super Admin</span>
+        </div>
+        
+        <!-- Tombol Avatar yang mengarah ke Profil -->
+        <button @click="goToProfile" class="relative rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">
+          <img 
+            :src="currentAdmin.image_url || `https://ui-avatars.com/api/?name=${currentAdmin.name || 'A'}&background=f97316&color=fff`" 
+            alt="Profil Admin" 
+            class="h-10 w-10 rounded-full object-cover border-2 border-gray-200 shadow-sm hover:border-orange-500 transition-colors"
+          />
           <span class="absolute bottom-0 right-0 block h-3 w-3 rounded-full bg-green-500 ring-2 ring-white"></span>
         </button>
       </div>
@@ -376,14 +405,57 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+// import { ref } from 'vue';
 
-// State untuk mengontrol status sidebar (terbuka/tertutup)
+// // State untuk mengontrol status sidebar (terbuka/tertutup)
+// const isSidebarCollapsed = ref(false);
+
+// // Fungsi untuk toggle (buka/tutup) sidebar saat hamburger ditekan
+// const toggleSidebar = () => {
+//   isSidebarCollapsed.value = !isSidebarCollapsed.value;
+// };
+
+import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import Swal from 'sweetalert2';
+
+const router = useRouter();
 const isSidebarCollapsed = ref(false);
+const currentAdmin = ref({ name: 'Admin', image_url: '' });
 
-// Fungsi untuk toggle (buka/tutup) sidebar saat hamburger ditekan
+// Mengambil data admin saat halaman dimuat
+onMounted(() => {
+  const savedData = localStorage.getItem('admin_data');
+  if (savedData) {
+    currentAdmin.value = JSON.parse(savedData);
+  }
+});
+
 const toggleSidebar = () => {
   isSidebarCollapsed.value = !isSidebarCollapsed.value;
+};
+
+const goToProfile = () => {
+  router.push('/admin/auth/admin_profile_page');
+};
+
+const handleLogout = () => {
+  Swal.fire({
+    title: 'Keluar sistem?',
+    text: "Anda harus login kembali untuk masuk ke panel admin.",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
+    confirmButtonText: 'Ya, Logout!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // Hapus sesi login
+      localStorage.removeItem('admin_token');
+      localStorage.removeItem('admin_data');
+      router.push('/admin/auth/login_page');
+    }
+  });
 };
 </script>
 
