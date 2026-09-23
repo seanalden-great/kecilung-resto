@@ -207,6 +207,22 @@
       <nav class="flex-1 overflow-y-auto p-4 space-y-2 text-sm font-medium hide-scrollbar mt-2">
         
         <!-- Helper Function untuk Styling Link -->
+         <!-- Menu Dashboard (Paling Atas) -->
+        <NuxtLink 
+          to="/admin/dashboard" 
+          :class="[
+            'flex items-center py-3 rounded-lg transition-all duration-200 hover:bg-orange-50 hover:text-orange-600 group border-l-4 border-transparent',
+            isSidebarCollapsed ? 'justify-center px-0' : 'gap-3 px-4'
+          ]" 
+          active-class="bg-orange-50 text-orange-600 border-l-4 border-orange-500 font-bold shadow-sm"
+        >
+          <!-- Icon Dashboard (Grid) -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500 group-hover:text-orange-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+          </svg>
+          <span :class="{'hidden': isSidebarCollapsed}">Dashboard</span>
+        </NuxtLink>
+        <!-- ===================== -->
         <!-- Menu Category -->
         <NuxtLink 
           to="/admin/category/category_page" 
