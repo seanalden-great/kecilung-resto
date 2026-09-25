@@ -25,7 +25,7 @@ export default defineNuxtConfig({
           rel: 'icon', 
           type: 'image/webp', 
           // Pastikan gambar kecilung_logo.webp benar-benar ada di dalam folder: public/assets/images/
-          href: '/assets/images/kecilung_logo.webp' 
+          href: '/favicon.ico' 
         }
       ]
     }
